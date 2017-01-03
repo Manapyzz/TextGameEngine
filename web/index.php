@@ -1,3 +1,5 @@
 <?php
 
-echo 'Hello on Text Game Engine';
+require_once('../app/routes.php');
+
+
