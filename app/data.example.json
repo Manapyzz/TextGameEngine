@@ -1,0 +1,16 @@
+{
+  "directions" : {
+    "up" : "place1",
+    "down" : "place2",
+    "left" : "place3",
+    "right" : "place4",
+    "initial" : "place5"
+  },
+  "roomText": {
+    "up" : "Text displayed when you are in the room just in front of you",
+    "down" : "Text displayed when you are in the room back to you",
+    "left" : "Text displayed when you are in the room on the left",
+    "right" : "Text displayed when you are in the room on the right",
+    "initial" : "Text displayed when you are in the room where you start"
+  }
+}

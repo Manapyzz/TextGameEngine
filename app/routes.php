@@ -18,7 +18,17 @@ $router->add('/', function() {
 });
 
 $router->add('/story', function() {
-    include('../views/helloworld.php');
+    include('../views/story.php');
+});
+
+// Routes for controllers
+$router->add('/directioncontroller', function() {
+    include('../app/controller/direction.php');
+});
+
+// Routing for ajax files
+$router->add('/direction', function() {
+    include('../app/ajax/direction.js');
 });
 
 $router->getRoute($path);
