@@ -26,9 +26,17 @@ $router->add('/directioncontroller', function() {
     include('../app/controller/direction.php');
 });
 
+$router->add('/inventorycontroller', function() {
+    include('../app/controller/inventory.php');
+});
+
 // Routing for ajax files
-$router->add('/direction', function() {
+$router->add('/directionajax', function() {
     include('../app/ajax/direction.js');
+});
+
+$router->add('/inventoryajax', function() {
+    include('../app/ajax/inventory.js');
 });
 
 $router->getRoute($path);

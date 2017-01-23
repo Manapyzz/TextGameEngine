@@ -1,6 +1,9 @@
 <?php
     $story_informations = file_get_contents('../app/data.json');
     $data = json_decode($story_informations);
+
+    session_start();
+    $_SESSION['move'] = "initial";
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,7 +18,8 @@
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-    <script src="direction"></script>
+    <script src="directionajax"></script>
+    <script src="inventoryajax"></script>
 
 </head>
 <body>
@@ -28,12 +32,24 @@
 
     <h3>Places :</h3>
 
+    <?php
+        if($data->inventory->is_enabled == "true") {
+            echo "<ul class='inventoryContent'></ul>";
+
+            echo "<ul class='inventoryActions'></ul>";
+        }
+    ?>
+
     <ul class="allDirections">
         <?php
             foreach ($data->directions as $key => $direction) {
                 if($key != "initial") {
                     echo "<li><a class='choiceBtn' href='directioncontroller' param='".$key."'>".ucfirst($direction)."</a></li>";
                 }
+            }
+
+            if($data->inventory->is_enabled == "true") {
+                echo "<li><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></li>";
             }
         ?>
     </ul>

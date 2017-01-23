@@ -7,6 +7,8 @@ $data = json_decode($story_informations);
 
 $param = $_GET['move'];
 
+$info['inventory'] = $data->inventory->is_enabled;
+
 if(empty($_SESSION) || $param == "goBack") {
     $_SESSION['move'] = "initial";
     $info['move'] = "initial";
