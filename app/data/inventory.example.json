@@ -1,0 +1,32 @@
+{
+  "inventory" : {
+    "content" : {
+      "0" : "Item1",
+      "1" : "Item2"
+    },
+    "inventory_open_msg" : "Message when Inventory is Opened",
+    "inventory_actions": {
+      "0" : [
+        "Action1",
+        "Action2"
+      ],
+      "1" : [
+        "Action1",
+        "Action2"
+      ]
+    },
+    "enabled_actions" : {
+      "0" : {
+        "Inspect" : "Define where you can do this action",
+        "Drop" : [
+          "Define where you can do this action",
+          "Define where you can do this action"
+        ]
+      },
+      "1" : {
+        "Use" : "Define where you can do this action",
+        "Inspect": "Define where you can do this action"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "inventory" : {
+    "is_enabled" : "Make inventory available or not (true or false)"
+  }
+}
