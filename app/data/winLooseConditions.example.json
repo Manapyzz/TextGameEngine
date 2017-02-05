@@ -1,0 +1,38 @@
+{
+  "conditions" : {
+    "win" : {
+      "places" : {
+        "isCharacterHere": "The piece you want you character to win in"
+      },
+      "inventory" : {
+        "isDropped" : [
+          "The item or items you want your Characted to have dropped before winning"
+        ]
+      }
+    },
+    "loose" : {
+      "places" : {
+        "isCharacterHere" : "The piece you want you character to win in",
+        "howMuchTimeWasHere": {
+          "room" : "The room you want to limited access to a certain number before loosing",
+          "number" : "The limited number"
+        }
+      }
+    }
+  },
+  "descriptions" : {
+    "win" : "Message if the character win",
+    "loose" : "Message if the character loose"
+  },
+  "required_conditions" : {
+    "win" : {
+      "isCharacterHere" : "If you want necessarily this winning condition set true here (or false if you not) ",
+      "isDropped" : "If you want necessarily this winning condition set true here (or false if you not) "
+    },
+    "loose" : {
+      "isCharacterHere" : "If you want necessarily this winning condition set true here (or false if you not) ",
+      "howMuchTimeWasHere" : "If you want necessarily this winning condition set true here (or false if you not) ",
+      "isDropped" : "If you want necessarily this winning condition set true here (or false if you not) "
+    }
+  }
+}
