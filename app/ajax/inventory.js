@@ -1,4 +1,5 @@
 $(function () {
+
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     }
@@ -12,6 +13,7 @@ $(function () {
     };
 
     $(document).on("click", ".inventoryBtn", function() {
+
         $.ajax({
             type: "GET",
             url: "inventorycontroller?status="+$(this).attr('param'),
@@ -19,7 +21,6 @@ $(function () {
             data: $(this).serialize(),
             success: function(data) {
                 var obj = JSON.parse(data);
-                var itemNumber = 0;
 
                 $('.message-box').html(obj.info.message);
 
@@ -32,34 +33,8 @@ $(function () {
                     $('.inventoryActionsContent').html('');
 
                     for(var i = 0;i<Object.size(inventoryContent);i++) {
-                        $('.inventoryContent').append('<li><a class="inventoryBtn" href="inventorycontroller" param="item">'+obj.info.inventoryContent[i]+'</a></li>');
+                        $('.inventoryContent').append('<li><a class="inventoryContentBtn" href="inventoryitemcontroller" action="item" number="'+i+'">'+obj.info.inventoryContent[i]+'</a></li>');
                     }
-
-                    console.log(obj.info.items);
-
-                    $(".inventoryContent li").click(function(){
-                        var itemNumber = $(this).index();
-
-                        var inventoryActions = obj.info.items[itemNumber];
-
-                        $('.inventoryActions').html('<li>Actions for '+inventoryContent[itemNumber]+'</li>')
-
-                        console.log(obj.info.enabled_actions);
-
-                        for(var i = 0;i<inventoryActions.length;i++) {
-
-                            switch(inventoryActions[i]) {
-                                case "Use":
-                                    $('.inventoryActions').append('<li><a class="inventoryBtn" href="inventorycontroller" param="useItem">'+inventoryActions[i]+'</a></li>');
-                                    break;
-                                case "Inspect":
-                                    $('.inventoryActions').append('<li><a class="inventoryBtn" href="inventorycontroller" param="inspectItem">'+inventoryActions[i]+'</a></li>');
-                                    break;
-                                case "Drop":
-                                    $('.inventoryActions').append('<li><a class="inventoryBtn" href="inventorycontroller" param="dropItem">'+inventoryActions[i]+'</a></li>');
-                            }
-                        }
-                    });
                 }
 
                 if(obj.info.status == "close") {

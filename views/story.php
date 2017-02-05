@@ -1,10 +1,19 @@
 <?php
-    $story_informations = file_get_contents('../app/data.json');
-    $data = json_decode($story_informations);
+    $general_informations = file_get_contents('../app/data/general.json');
+    $places_informations = file_get_contents('../app/data/places.json');
+    $general = json_decode($general_informations);
+    $places = json_decode($places_informations);
+
+    if($general->inventory->is_enabled) {
+        $inventory_informations = file_get_contents('../app/data/inventory.json');
+        $inventory = json_decode($general_informations);
+    }
 
     session_start();
     $_SESSION['move'] = "initial";
+
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,6 +29,7 @@
         crossorigin="anonymous"></script>
     <script src="directionajax"></script>
     <script src="inventoryajax"></script>
+    <script src="inventoryitemajax"></script>
 
 </head>
 <body>
@@ -27,13 +37,13 @@
     <h1>Hello Random Story !</h1>
 
     <div class="message-box">
-        <p><?php echo $data->roomText->initial ?></p>
+        <p><?php echo $places->roomText->initial ?></p>
     </div>
 
     <h3>Places :</h3>
 
     <?php
-        if($data->inventory->is_enabled == "true") {
+        if($general->inventory->is_enabled == "true") {
             echo "<ul class='inventoryContent'></ul>";
 
             echo "<ul class='inventoryActions'></ul>";
@@ -42,18 +52,22 @@
 
     <ul class="allDirections">
         <?php
-            foreach ($data->directions as $key => $direction) {
+            foreach ($places->directions as $key => $direction) {
                 if($key != "initial") {
                     echo "<li><a class='choiceBtn' href='directioncontroller' param='".$key."'>".ucfirst($direction)."</a></li>";
                 }
             }
 
-            if($data->inventory->is_enabled == "true") {
+            if($general->inventory->is_enabled == "true") {
                 echo "<li><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></li>";
             }
         ?>
     </ul>
 
 
+
+    <h4>DANGER ZONE:</h4>
+
+    <a href="restartcontroller">Restart Game !</a>
 </body>
 </html>

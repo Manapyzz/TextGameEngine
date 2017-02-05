@@ -2,8 +2,12 @@
 
 session_start();
 
-$story_informations = file_get_contents('../app/data.json');
-$data = json_decode($story_informations);
+$general_informations = file_get_contents('../app/data/general.json');
+$places_informations = file_get_contents('../app/data/places.json');
+$inventory_informations = file_get_contents('../app/data/inventory.json');
+$general = json_decode($general_informations);
+$places = json_decode($places_informations);
+$inventory = json_decode($inventory_informations);
 
 $param = $_GET['status'];
 
@@ -12,28 +16,28 @@ if(empty($_SESSION['status'])) {
     $info['status'] = "closed";
 }
 
-if(isset($param) && !empty($_SESSION)) {
-    $_SESSION['status'] = $param;
-    $info['status'] = $param;
+if(isset($param) && !empty($_SESSION['status'])) {
 
-    if($param == "open") {
-        $info['message'] = $data->inventory->inventory_open_msg;
+    if($param == "open" || $param == "close") {
+        $_SESSION['status'] = $param;
+        $info['status'] = $_SESSION['status'];
+    }
+
+    if($_SESSION['status'] == "open") {
+        $info['message'] = $inventory->inventory->inventory_open_msg;
 
         if(!isset($_SESSION['inventoryContent'])){
-            $_SESSION['inventoryContent'] = $data->inventory->content;
+            $_SESSION['inventoryContent'] = $inventory->inventory->content;
             $info['inventoryContent'] = $_SESSION['inventoryContent'];
         } else {
             $info['inventoryContent'] = $_SESSION['inventoryContent'];
         }
-
-        $info['items'] = $data->inventory->inventory_actions;
-        $info['enabled_actions'] = $data->inventory->enabled_actions;
     }
 
-    if($param == "close") {
+    if($_SESSION['status'] == "close") {
         $move = $_SESSION['move'];
-        $info['message'] = $data->roomText->$move;
-        $info['buttons'] = $data->directions;
+        $info['message'] = $places->roomText->$move;
+        $info['buttons'] = $places->directions;
     }
 
     if(isset($_SESSION['move'])) {
@@ -44,6 +48,6 @@ if(isset($param) && !empty($_SESSION)) {
 if(isset($info)) {
     echo json_encode(array('info' => $info));
 } else {
-    echo json_encode(array('error' => 'no data sent'));
+    echo json_encode(array('error' => 'no inventory sent'));
 }
 

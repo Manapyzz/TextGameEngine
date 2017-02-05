@@ -1,3 +1,5 @@
 vendor/
 .idea/
-app/data.json
+app/data/general.json
+app/data/places.json
+app/data/inventory.json

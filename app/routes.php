@@ -23,11 +23,19 @@ $router->add('/story', function() {
 
 // Routes for controllers
 $router->add('/directioncontroller', function() {
-    include('../app/controller/direction.php');
+    include('../app/controller/places.php');
 });
 
 $router->add('/inventorycontroller', function() {
     include('../app/controller/inventory.php');
+});
+
+$router->add('/inventoryitemcontroller', function() {
+    include('../app/controller/inventoryItem.php');
+});
+
+$router->add('/restartcontroller', function() {
+    include('../app/controller/restart.php');
 });
 
 // Routing for ajax files
@@ -37,6 +45,10 @@ $router->add('/directionajax', function() {
 
 $router->add('/inventoryajax', function() {
     include('../app/ajax/inventory.js');
+});
+
+$router->add('/inventoryitemajax', function() {
+    include('../app/ajax/inventoryItem.js');
 });
 
 $router->getRoute($path);
