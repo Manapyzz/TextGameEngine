@@ -21,8 +21,9 @@
     <meta param="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="css">
     <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -30,44 +31,51 @@
     <script src="directionajax"></script>
     <script src="inventoryajax"></script>
     <script src="inventoryitemajax"></script>
-
 </head>
 <body>
 
-    <h1>Hello Random Story !</h1>
+<main class="storymain">
 
-    <div class="message-box">
-        <p><?php echo $places->roomText->initial ?></p>
-    </div>
-
-    <h3>Places :</h3>
-
-    <?php
-        if($general->inventory->is_enabled == "true") {
-            echo "<ul class='inventoryContent'></ul>";
-
-            echo "<ul class='inventoryActions'></ul>";
-        }
-    ?>
-
-    <ul class="allDirections">
-        <?php
+    <div class="background">
+        <ul class="allDirections">
+            <?php
             foreach ($places->directions as $key => $direction) {
                 if($key != "initial") {
-                    echo "<li><a class='choiceBtn' href='directioncontroller' param='".$key."'>".ucfirst($direction)."</a></li>";
+                    echo "<li id='".$key."'><a class='choiceBtn' href='directioncontroller' param='".$key."'><img src=".$key." alt=".$direction."></a></li>";
                 }
             }
+            ?>
+        </ul>
+        <img class="character" src="char" alt="character">
+    </div>
 
+
+    <div class="container">
+        <div class="message-box">
+            <p><?php echo $places->roomText->initial ?></p>
+        </div>
+        <div class="actions">
+            <?php
             if($general->inventory->is_enabled == "true") {
-                echo "<li><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></li>";
+                echo "<ul class='inventoryContent'></ul>";
+
+                echo "<ul class='inventoryActions'></ul>";
             }
-        ?>
-    </ul>
+            ?>
+            <?php
+            if($general->inventory->is_enabled == "true") {
+                echo "<div><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></div>";
+            }
+            ?>
+        </div>
+    </div>
 
 
+    <div class="dangerzone">
+        <h4>DANGER ZONE:</h4>
+        <a href="restartcontroller">Restart Game !</a>
+    </div>
 
-    <h4>DANGER ZONE:</h4>
-
-    <a href="restartcontroller">Restart Game !</a>
+</main>
 </body>
 </html>

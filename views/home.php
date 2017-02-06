@@ -6,14 +6,27 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="css">
 </head>
 <body>
+<main class="homemain">
 
-    <?php include('layouts/header.php') ?>
+    <h1>Select character</h1>
 
-    <h1>I am the homepage !</h1>
+    <div id="wrap">
+        <div id="left_char">
+            <img src="char" alt="character">
+        </div>
+        <div id="right_char">
+            <img src="char2" alt="character">
+        </div>
+    </div>
 
-    <?php include('layouts/footer.php') ?>
+    <a href="story">Start</a>
+
+</main>
+
+
 </body>
 </html>
