@@ -51,4 +51,43 @@ $router->add('/inventoryitemajax', function() {
     include('../app/ajax/inventoryItem.js');
 });
 
+//Routing for assets
+$router->add('/css', function() {
+    include('../public/css/style.css');
+    header("Content-type: text/css");
+});
+
+$router->add('/char', function() {
+    include('../public/img/char.png');
+});
+
+$router->add('/char2', function() {
+    include('../public/img/char2.png');
+});
+
+$router->add('/bg', function() {
+    include('../public/img/bg.jpg');
+});
+
+$router->add('/up', function() {
+    include('../public/img/up.png');
+});
+
+$router->add('/down', function() {
+    include('../public/img/down.png');
+});
+
+$router->add('/right', function() {
+    include('../public/img/right.png');
+});
+
+$router->add('/left', function() {
+    include('../public/img/left.png');
+});
+
+$router->add('/inventory', function() {
+    include('../public/img/inventory.png');
+});
+
+
 $router->getRoute($path);
