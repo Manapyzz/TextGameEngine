@@ -26,7 +26,7 @@ $(function () {
 
                 if(obj.info.status == "open") {
                     var inventoryContent = obj.info.inventoryContent;
-
+                    
                     $('.actions').html('<div><a class="inventoryBtn" href="inventorycontroller" param="close">Close Inventory</a></div>');
 
                     $('.inventoryContent').html('');

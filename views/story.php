@@ -54,14 +54,16 @@
         <div class="message-box">
             <p><?php echo $places->roomText->initial ?></p>
         </div>
-        <div class="actions">
-            <?php
-            if($general->inventory->is_enabled == "true") {
-                echo "<ul class='inventoryContent'></ul>";
+        <?php
+
+        if($general->inventory->is_enabled == "true") {
+            echo "<ul class='inventoryContent'></ul>";
 
                 echo "<ul class='inventoryActions'></ul>";
             }
-            ?>
+        ?>
+        <div class="actions">
+
             <?php
             if($general->inventory->is_enabled == "true") {
                 echo "<div><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></div>";
