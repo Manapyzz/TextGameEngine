@@ -15,6 +15,11 @@ $param = $_GET['move'];
 
 $info['inventory'] = $general->inventory->is_enabled;
 
+if($general->activate_css->is_enabled) {
+    $info['activate_css'] = true;
+} else {
+    $info['activate_css'] = false;
+}
 
 if($general->inventory->is_enabled) {
     if(!isset($_SESSION['inventoryContent'])) {

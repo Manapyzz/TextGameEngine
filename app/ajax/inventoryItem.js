@@ -53,7 +53,7 @@ $(function () {
                 // Inspect Action
                 if(obj.info.inspect) {
                     // Display the description of the object when your click on Inspect.
-                    console.log(obj.info.inspect[obj.info.itemNumber]);
+                    alert(obj.info.inspect[obj.info.itemNumber]);
                 }
 
                 if(obj.info.dropItem) {

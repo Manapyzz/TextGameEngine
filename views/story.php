@@ -37,16 +37,34 @@
 <main class="storymain">
 
     <div class="background">
+
+        <?php
+            if(!$general->activate_css->is_enabled) {
+                echo "<h2>Rooms:</h2>";
+            }
+        ?>
+
         <ul class="allDirections">
+
             <?php
+
             foreach ($places->directions as $key => $direction) {
                 if($key != "initial") {
-                    echo "<li id='".$key."'><a class='choiceBtn' href='directioncontroller' param='".$key."'><img src=".$key." alt=".$direction."></a></li>";
+                    if($general->activate_css->is_enabled) {
+                        echo "<li id='".$key."'><a class='choiceBtn' href='directioncontroller' param='".$key."'><img src=".$key." alt=".$direction."></a></li>";
+                    } else {
+                        echo "<li id='".$key."'><a class='choiceBtn' href='directioncontroller' param='".$key."'>".$direction."</a></li>";
+                    }
                 }
             }
             ?>
         </ul>
-        <img class="character" src="char" alt="character">
+        <?php
+            if($general->activate_css->is_enabled) {
+                echo '<img class="character" src="char" alt="character">';
+            }
+        ?>
+
     </div>
 
 

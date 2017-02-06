@@ -59,7 +59,11 @@ $(function () {
                     for (var key in buttons) {
                         if (buttons.hasOwnProperty(key)) {
                             if(key != "initial") {
-                                $('.allDirections').append("<li id='"+key+"'><a class='choiceBtn' href='directioncontroller' param='"+key+"'><img src='"+key+"' alt='"+buttons+"'></a></li>");
+                                if(obj.info.activate_css) {
+                                    $('.allDirections').append("<li id='"+key+"'><a class='choiceBtn' href='directioncontroller' param='"+key+"'><img src='"+key+"' alt='"+buttons+"'></a></li>");
+                                } else {
+                                    $('.allDirections').append("<li id='"+key+"'><a class='choiceBtn' href='directioncontroller' param='"+key+"'>"+capitalize(buttons[key])+"</a></li>");
+                                }
                             }
                         }
                     }

@@ -2,6 +2,9 @@
 
 require_once('../vendor/autoload.php');
 require_once('../helper/Router.php');
+$general_informations = file_get_contents('../app/data/general.json');
+$general = json_decode($general_informations);
+
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,43 +54,45 @@ $router->add('/inventoryitemajax', function() {
     include('../app/ajax/inventoryItem.js');
 });
 
-//Routing for assets
-$router->add('/css', function() {
-    include('../public/css/style.css');
-    header("Content-type: text/css");
-});
+if($general->activate_css->is_enabled) {
+    //Routing for assets
+    $router->add('/css', function() {
+        include('../public/css/style.css');
+        header("Content-type: text/css");
+    });
 
-$router->add('/char', function() {
-    include('../public/img/char.png');
-});
+    $router->add('/char', function() {
+        include('../public/img/char.png');
+    });
 
-$router->add('/char2', function() {
-    include('../public/img/char2.png');
-});
+    $router->add('/char2', function() {
+        include('../public/img/char2.png');
+    });
 
-$router->add('/bg', function() {
-    include('../public/img/bg.jpg');
-});
+    $router->add('/bg', function() {
+        include('../public/img/bg.jpg');
+    });
 
-$router->add('/up', function() {
-    include('../public/img/up.png');
-});
+    $router->add('/up', function() {
+        include('../public/img/up.png');
+    });
 
-$router->add('/down', function() {
-    include('../public/img/down.png');
-});
+    $router->add('/down', function() {
+        include('../public/img/down.png');
+    });
 
-$router->add('/right', function() {
-    include('../public/img/right.png');
-});
+    $router->add('/right', function() {
+        include('../public/img/right.png');
+    });
 
-$router->add('/left', function() {
-    include('../public/img/left.png');
-});
+    $router->add('/left', function() {
+        include('../public/img/left.png');
+    });
 
-$router->add('/inventory', function() {
-    include('../public/img/inventory.png');
-});
+    $router->add('/inventory', function() {
+        include('../public/img/inventory.png');
+    });
+}
 
 
 $router->getRoute($path);
