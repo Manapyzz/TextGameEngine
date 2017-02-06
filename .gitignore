@@ -3,3 +3,4 @@ vendor/
 app/data/general.json
 app/data/places.json
 app/data/inventory.json
+app/data/winLooseConditions.json
