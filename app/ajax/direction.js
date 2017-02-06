@@ -16,21 +16,22 @@ $(function () {
                 if(obj.info.move == "initial") {
                     var buttons = obj.info.buttons;
                     $('.allDirections').empty();
+                    $('.actions').empty();
                     for (var key in buttons) {
                         if (buttons.hasOwnProperty(key)) {
                             if(key != "initial") {
-                                $('.allDirections').append("<li><a class='choiceBtn' href='directioncontroller' param='"+key+"'>"+capitalize(buttons[key])+"</a></li>");
+                                $('.allDirections').append("<li id='"+key+"'><a class='choiceBtn' href='directioncontroller' param='"+key+"'><img src='"+key+"' alt='"+buttons+"'></a></li>");
                             }
                         }
                     }
                     if(obj.info.inventory) {
-                        $('.allDirections').append("<li><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></li>");
+                        $('.actions').append("<div><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></div>");
                     }
                 } else {
                     if(obj.info.inventory) {
-                        $('.allDirections').html("<li><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></li>");
+                        $('.actions').html("<div><a class='inventoryBtn' href='inventorycontroller' param='open'>Open Inventory</a></div>");
                     }
-                    $('.allDirections').append("<li><a class='choiceBtn' href='directioncontroller' param='goBack'>Go Back</a></li>");
+                    $('.actions').append("<div id='"+key+"'><a class='choiceBtn' href='directioncontroller' param='goBack'>Go Back</a></div>");
                 }
                 $('.message-box').html('<p>'+obj.info.message+'</p>');
             },
